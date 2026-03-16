@@ -1,286 +1,1393 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MASKA Indian Street Food - Authentic Indian Cuisine in Hartsdale, NY</title>
-    <meta name="description" content="Experience the vibrant and diverse flavors of Indian street food at MASKA in Hartsdale, NY. Specializing in quick, flavorful, and authentic eats. Order online!">
-    
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="MASKA Indian Street Food - Authentic Indian Cuisine in Hartsdale, NY">
-    <meta property="og:description" content="Experience the vibrant and diverse flavors of Indian street food at MASKA in Hartsdale, NY. Specializing in quick, flavorful, and authentic eats. Order online!">
-    <meta property="og:image" content="https://images.unsplash.com/photo-1567188041720-3365218564af?q=80&w=1200&auto=format&fit=crop">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:title" content="MASKA Indian Street Food - Authentic Indian Cuisine in Hartsdale, NY">
-    <meta property="twitter:description" content="Experience the vibrant and diverse flavors of Indian street food at MASKA in Hartsdale, NY. Specializing in quick, flavorful, and authentic eats. Order online!">
-    <meta property="twitter:image" content="https://images.unsplash.com/photo-1567188041720-3365218564af?q=80&w=1200&auto=format&fit=crop">
-
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/lucide@latest"></script>
-
+    <title>Maska - Indian Street Food | Hartsdale, NY</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        :root {
-            --primary: #A06A33;
-            --secondary: #7C9A50;
-            --accent: #1A1A1A;
-            --background: #FDFBF8;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
+
+        :root {
+            --primary: #FF6B35;
+            --secondary: #F7931E;
+            --accent: #FFD23F;
+            --dark: #1A1A2E;
+            --light: #FFF8F0;
+            --spice-red: #C73E1D;
+            --turmeric: #E9C46A;
+            --cilantro: #2A9D8F;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--background);
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* Animated Background Pattern */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image:
+                radial-gradient(circle at 20% 50%, rgba(255, 107, 53, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(247, 147, 30, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 40% 20%, rgba(199, 62, 29, 0.03) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1rem 5%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.5rem 5%;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            height: 60px;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 0.95rem;
+            position: relative;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .order-btn {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white !important;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+        }
+
+        .order-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255, 107, 53, 0.4);
+        }
+
+        .order-btn::after {
+            display: none !important;
+        }
+
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            margin-top: 80px;
+            min-height: 90vh;
+            display: flex;
+            align-items: center;
+            padding: 0 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-content {
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--turmeric), var(--accent));
+            color: var(--dark);
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 10px rgba(233, 196, 106, 0.3);
+            white-space: nowrap;
+            letter-spacing: 0.5px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--primary), var(--spice-red));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 2rem;
+            max-width: 500px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 2.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--dark);
+            padding: 1rem 2.5rem;
+            border: 2px solid var(--dark);
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: var(--dark);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .hero-image {
+            position: relative;
+            animation: fadeIn 1.2s ease;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            transform: rotate(2deg);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-image:hover img {
+            transform: rotate(0deg) scale(1.02);
+        }
+
+        .floating-spice {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, var(--accent), var(--secondary));
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .spice-1 {
+            top: -20px;
+            left: -20px;
+            animation-delay: 0s;
+        }
+
+        .spice-2 {
+            bottom: 20px;
+            right: -30px;
+            animation-delay: 2s;
+            background: radial-gradient(circle, var(--cilantro), #264653);
+        }
+
+        .spice-3 {
+            top: 50%;
+            left: -40px;
+            animation-delay: 4s;
+            background: radial-gradient(circle, var(--spice-red), #9b2226);
+        }
+
+        /* Features Bar */
+        .features-bar {
+            background: var(--dark);
+            padding: 2rem 5%;
+            margin-top: -50px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .features-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            text-align: center;
+        }
+
+        .feature-item {
+            color: white;
+            padding: 1rem;
+        }
+
+        .feature-item i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
             color: var(--accent);
         }
-        .bg-primary { background-color: var(--primary); }
-        .text-primary { color: var(--primary); }
-        .border-primary { border-color: var(--primary); }
-        .bg-secondary { background-color: var(--secondary); }
-        .text-secondary { color: var(--secondary); }
-        .bg-accent { background-color: var(--accent); }
-        .text-accent { color: var(--accent); }
-        .rating-star { color: #f59e0b; } /* amber-500 */
-    </style>
 
-    <!-- JSON-LD for Local Business -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Restaurant",
-      "name": "MASKA Indian Street Food",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "15 E Hartsdale Ave",
-        "addressLocality": "Hartsdale",
-        "addressRegion": "NY",
-        "postalCode": "10530",
-        "addressCountry": "US"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 41.0186017,
-        "longitude": -73.7978503
-      },
-      "url": "http://www.maskaindianny.com/",
-      "telephone": "+19144375022",
-      "servesCuisine": "Indian",
-      "priceRange": "$$",
-      "openingHoursSpecification": [
-        {
-          "@type": "OpeningHoursSpecification",
-          "dayOfWeek": [
-            "Monday",
-            "Wednesday",
-            "Thursday",
-            "Friday",
-            "Saturday",
-            "Sunday"
-          ],
-          "opens": "11:00",
-          "closes": "21:00"
+        .feature-item h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
         }
-      ],
-      "image": "https://images.unsplash.com/photo-1567188041720-3365218564af?q=80&w=1200&auto=format&fit=crop",
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.9",
-        "reviewCount": "161"
-      }
-    }
-    </script>
+
+        .feature-item p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        /* About Section */
+        .about {
+            padding: 6rem 5%;
+            background: white;
+        }
+
+        .about-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image {
+            position: relative;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .experience-badge {
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            background: linear-gradient(135deg, var(--primary), var(--spice-red));
+            color: white;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        .experience-badge .years {
+            font-size: 2.5rem;
+            font-weight: 900;
+            line-height: 1;
+        }
+
+        .experience-badge .text {
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .about-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+        .about-content h2 span {
+            color: var(--primary);
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+
+        .heritage-list {
+            list-style: none;
+            margin-top: 2rem;
+        }
+
+        .heritage-list li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            font-weight: 500;
+        }
+
+        .heritage-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            left: 0;
+            color: var(--cilantro);
+        }
+
+        /* Menu Preview Section */
+        .menu-preview {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, #fff8f0 0%, #fff 100%);
+        }
+
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 4rem;
+        }
+
+        .section-header h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .menu-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+        }
+
+        .menu-card-image {
+            height: 220px;
+            background: linear-gradient(135deg, var(--turmeric), var(--accent));
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .menu-card:hover .menu-card-image img {
+            transform: scale(1.1);
+        }
+
+        .menu-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: var(--cilantro);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .menu-badge.vegan {
+            background: #2d6a4f;
+        }
+
+        .menu-badge.spicy {
+            background: var(--spice-red);
+        }
+
+        .menu-card-content {
+            padding: 1.5rem;
+        }
+
+        .menu-card-content h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .menu-card-content p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+
+        .menu-card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+        }
+
+        .price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .order-link {
+            color: var(--dark);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: color 0.3s ease;
+        }
+
+        .order-link:hover {
+            color: var(--primary);
+        }
+
+        /* Special Feature */
+        .special-feature {
+            padding: 4rem 5%;
+            background: var(--dark);
+            margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .special-feature::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: repeating-linear-gradient(45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(255, 255, 255, 0.03) 10px,
+                    rgba(255, 255, 255, 0.03) 20px);
+            animation: slide 20s linear infinite;
+        }
+
+        .special-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+            position: relative;
+            z-index: 1;
+            flex-wrap: wrap;
+        }
+
+        .special-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .special-content h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .special-content h2 span {
+            color: var(--accent);
+        }
+
+        .special-content p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .special-cta {
+            background: var(--accent);
+            color: var(--dark);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .special-cta:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(255, 210, 63, 0.3);
+        }
+
+        /* Gallery Section */
+        .gallery {
+            padding: 6rem 5%;
+            background: white;
+        }
+
+        .gallery-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: repeat(2, 250px);
+            gap: 1rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item.large {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            padding: 2rem 1rem 1rem;
+            color: white;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        /* Visit Section */
+        .visit {
+            padding: 6rem 5%;
+            background: linear-gradient(135deg, var(--light) 0%, #fff 100%);
+        }
+
+        .visit-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .visit-info h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .info-card:hover {
+            transform: translateX(10px);
+        }
+
+        .info-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .info-content h3 {
+            margin-bottom: 0.3rem;
+            color: var(--dark);
+        }
+
+        .info-content p {
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .hours-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .map-container {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            height: 100%;
+            min-height: 400px;
+            position: relative;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #e0e0e0, #f0f0f0);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+        }
+
+        .map-placeholder i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 5% 2rem;
+        }
+
+        .footer-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand img {
+            height: 60px;
+            margin-bottom: 1rem;
+            filter: brightness(0) invert(1);
+        }
+
+        .footer-brand p {
+            color: rgba(255, 255, 255, 0.7);
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: var(--accent);
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-20px) rotate(5deg);
+            }
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(50px, 50px);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .features-container {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .gallery-item.large {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero p {
+                margin: 0 auto 2rem;
+            }
+
+            .about-container,
+            .visit-container {
+                grid-template-columns: 1fr;
+            }
+
+            .features-container {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .experience-badge {
+                right: 20px;
+            }
+
+            .hero-badge {
+                font-size: 0.85rem;
+                padding: 0.5rem 1.2rem;
+            }
+        }
+
+        /* Scroll Reveal */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+    <base target="_blank">
 </head>
-<body class="antialiased">
 
-    <!-- Header -->
-    <header id="header" class="bg-background/80 backdrop-blur-md sticky top-0 z-50 shadow-sm">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-primary tracking-wider">MASKA</a>
-            <nav class="hidden md:flex items-center space-x-8">
-                <a href="#about" class="text-gray-700 hover:text-primary transition-colors">About</a>
-                <a href="#reviews" class="text-gray-700 hover:text-primary transition-colors">Reviews</a>
-                <a href="#contact" class="text-gray-700 hover:text-primary transition-colors">Hours & Location</a>
-                <a href="https://order.toasttab.com/online/maska-hartsdale-15-east-hartsdale-avenue" target="_blank" class="bg-primary text-white px-5 py-2 rounded-full hover:bg-opacity-90 transition-all font-semibold shadow-md">Order Online</a>
-            </nav>
-            <button id="mobile-menu-button" class="md:hidden">
-                <i data-lucide="menu" class="text-accent"></i>
-            </button>
-        </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden px-6 pb-4">
-            <a href="#about" class="block py-2 text-gray-700 hover:text-primary">About</a>
-            <a href="#reviews" class="block py-2 text-gray-700 hover:text-primary">Reviews</a>
-            <a href="#contact" class="block py-2 text-gray-700 hover:text-primary">Hours & Location</a>
-            <a href="https://order.toasttab.com/online/maska-hartsdale-15-east-hartsdale-avenue" target="_blank" class="block mt-4 bg-primary text-white text-center px-5 py-2 rounded-full hover:bg-opacity-90 transition-all font-semibold">Order Online</a>
-        </div>
-    </header>
+<body>
+    <div class="bg-pattern"></div>
 
-    <main>
-        <!-- Hero Section -->
-        <section id="home" class="relative h-[70vh] min-h-[400px] bg-cover bg-center" style="background-image: url('https://images.unsplash.com/photo-1567188041720-3365218564af?q=80&w=2070&auto=format&fit=crop');">
-            <div class="absolute inset-0 bg-black/60"></div>
-            <div class="relative container mx-auto px-6 h-full flex flex-col justify-center items-center text-center text-white">
-                <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight uppercase">MASKA</h1>
-                <p class="mt-4 text-xl md:text-2xl font-light tracking-widest">INDIAN STREET FOOD</p>
-                <a href="https://order.toasttab.com/online/maska-hartsdale-15-east-hartsdale-avenue" target="_blank" class="mt-8 bg-primary text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-opacity-90 transition-all transform hover:scale-105 shadow-lg">
-                    Order Online Now
-                </a>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a class="logo-link" target="_self">
+                <img src="https://kimi-web-img.moonshot.cn/img/www.maskaindianny.com/28c0ed148430fd4b19f57492bb9fb74b36a206bd.png" alt="Maska Logo" class="logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="https://www.maskaindianny.com/maska-indian-menu-2025.pdf">Menu</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="https://www.toasttab.com/maska-hartsdale-15-east-hartsdale-avenue/rewardsSignup">Reviews</a></li>
+                <li><a href="#visit">Visit Us</a></li>
+                <li><a href="#footer">Order</a></li>
+                <li><a href="#order" class="order-btn">Order Online</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <i class="fas fa-bars"></i>
             </div>
-        </section>
+        </div>
+    </nav>
 
-        <!-- About Section -->
-        <section id="about" class="py-16 md:py-24 bg-white">
-            <div class="container mx-auto px-6 text-center max-w-4xl">
-                <h2 class="text-3xl md:text-4xl font-bold text-accent mb-6">A Taste of India's Bustling Streets</h2>
-                <p class="text-lg text-gray-600 leading-relaxed mb-6">
-                    Hartsdale, NY, has a new culinary gem for lovers of bold flavors and plant-based eats! Maska, a vibrant Indian restaurant, brings the rich and diverse flavors of Indian street food to Westchester. Specializing in quick, flavorful, and authentic street-style Indian cuisine.
-                </p>
-                <p class="text-lg text-gray-600 leading-relaxed mb-8">
-                    Brought to you by experienced restaurateurs, Maska blends tradition with innovation, ensuring a memorable dining experience with every bite. Whether you're dining in or grabbing a bite on the go, expect bold flavors, fresh ingredients, and a vibrant atmosphere that celebrates India's rich culinary heritage.
-                </p>
-                <p class="text-xl font-semibold text-primary italic">
-                    "Come experience Maska – where every bite is a taste of India’s bustling streets, now in the heart of Hartsdale!"
-                </p>
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-badge">✨ Now Open in Hartsdale!</div>
+                <h1>Authentic <span>Indian Street Food</span> with a Modern Twist</h1>
+                <p>Experience the vibrant flavors of India's bustling streets right here in Westchester. Maska brings you bold, authentic vegetarian and vegan street food that celebrates tradition with every bite.</p>
+                <div class="hero-buttons">
+                    <a href="#menu" class="btn-primary">Explore Menu</a>
+                    <a href="#visit" class="btn-secondary">Find Us</a>
+                </div>
             </div>
-        </section>
+            <div class="hero-image">
+                <div class="floating-spice spice-1"></div>
+                <div class="floating-spice spice-2"></div>
+                <div class="floating-spice spice-3"></div>
+                <img src="https://kimi-web-img.moonshot.cn/img/images.happycow.net/a99c3b594c29c8b7e4e435b6cea1221f5dcbb804.jpeg" alt="Maska Indian Food">
+            </div>
+        </div>
+    </section>
 
-        <!-- Reviews Section -->
-        <section id="reviews" class="py-16 md:py-24">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl md:text-4xl font-bold text-center text-accent mb-12">What Our Customers Say</h2>
-                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    
-                    <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-primary">
-                        <div class="flex items-center mb-4">
-                            <img src="https://lh3.googleusercontent.com/a/ACg8ocJyCrYKZVkUyMz_JQufi9MhAgnpStMqJemdmLAhU_C1cQd7-g=s128-c0x00000000-cc-rp-mo-ba3" alt="Jocey" class="w-12 h-12 rounded-full mr-4">
-                            <div>
-                                <p class="font-semibold text-accent">Jocey</p>
-                                <div class="flex items-center">
-                                    <i data-lucide="star" class="rating-star w-4 h-4 fill-current"></i><i data-lucide="star" class="rating-star w-4 h-4 fill-current"></i><i data-lucide="star" class="rating-star w-4 h-4 fill-current"></i><i data-lucide="star" class="rating-star w-4 h-4 fill-current"></i><i data-lucide="star" class="rating-star w-4 h-4 fill-current"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 italic">"Food here is delicious! I love the gobi and samosas, but can’t go wrong with anything on the menu. Food was great both dine-in and takeout. The owner is also very friendly and welcoming."</p>
-                    </div>
+    <!-- Features Bar -->
+    <div class="features-bar">
+        <div class="features-container">
+            <div class="feature-item">
+                <i class="fas fa-leaf"></i>
+                <h3>100% Vegetarian</h3>
+                <p>Authentic veggie delights</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-seedling"></i>
+                <h3>Vegan Options</h3>
+                <p>Plant-based perfection</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-clock"></i>
+                <h3>Open Late</h3>
+                <p>Until 11:30 PM</p>
+            </div>
+            <div class="feature-item">
+                <i class="fas fa-fire"></i>
+                <h3>Fresh & Spicy</h3>
+                <p>Made to order</p>
+            </div>
+        </div>
+    </div>
 
-                    <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-primary">
-                        <div class="flex items-center mb-4">
-                            <img src="https://lh3.googleusercontent.com/a/ACg8ocJ0FjihqoPS3PZT_xE5b8MNFfCOtxzlMHCgf1qp47384eeCOck=s128-c0x00000000-cc-rp-mo-ba3" alt="Nikhil Dugane" class="w-12 h-12 rounded-full mr-4">
-                            <div>
-                                <p class="font-semibold text-accent">Nikhil Dugane</p>
-                                <div class="flex items-center">
-                                    <i data-lucide="star" class="rating-star w-4 h-4 fill-current"></i><i data-lucide="star" class="rating-star w-4 h-4 fill-current"></i><i data-lucide="star" class="rating-star w-4 h-4 fill-current"></i><i data-lucide="star" class="rating-star w-4 h-4 fill-current"></i><i data-lucide="star" class="rating-star w-4 h-4 fill-current"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 italic">"Vegetarian place alert !!!!! Fantastic place for vegetarian options. Batata Vada is must try... Host is amazing person. Ask for suggestions!! Really works."</p>
-                    </div>
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <div class="about-image reveal">
+                <img src="https://kimi-web-img.moonshot.cn/img/static.where-e.com/f29fbc9b78e6939919cb1232736d5a9c50b61f3c.jpg" alt="Maska Restaurant Interior">
+                <div class="experience-badge">
+                    <span class="years">20+</span>
+                    <span class="text">Years<br>Experience</span>
+                </div>
+            </div>
+            <div class="about-content reveal">
+                <h2>Our <span>Story</span></h2>
+                <p>Opened in December 2024, Maska is the newest culinary gem in Hartsdale, bringing the rich and diverse flavors of Indian street food to Westchester County.</p>
+                <p>Brought to you by the experienced team behind NH 44 Indian, Jaipore Express, Vega Mexican Cuisine, Tako Mexican Street Food, and Lemak Malaysian, we blend decades of restaurant expertise with authentic Indian traditions.</p>
+                <p>Specializing in quick, flavorful, and authentic street-style Indian cuisine, we serve up classics like crispy beet cutlets, tangy chaat, and hearty paneer kathi rolls with a modern twist.</p>
+                <ul class="heritage-list">
+                    <li>Authentic Indian street food recipes</li>
+                    <li>Fresh, high-quality ingredients</li>
+                    <li>Vegetarian & vegan-friendly</li>
+                    <li>Late-night dining available</li>
+                </ul>
+            </div>
+        </div>
+    </section>
 
-                    <div class="bg-white p-6 rounded-lg shadow-lg border-t-4 border-primary">
-                        <div class="flex items-center mb-4">
-                            <img src="https://lh3.googleusercontent.com/a-/ALV-UjU-OKyGpMdFSPsgM5ok5hGeH67vo-CuMcEamnI-bPMCsqYtyzI=s128-c0x00000000-cc-rp-mo-ba2" alt="Jessica Schubert" class="w-12 h-12 rounded-full mr-4">
-                            <div>
-                                <p class="font-semibold text-accent">Jessica Schubert</p>
-                                <div class="flex items-center">
-                                    <i data-lucide="star" class="rating-star w-4 h-4 fill-current"></i><i data-lucide="star" class="rating-star w-4 h-4 fill-current"></i><i data-lucide="star" class="rating-star w-4 h-4 fill-current"></i><i data-lucide="star" class="rating-star w-4 h-4 fill-current"></i><i data-lucide="star" class="rating-star w-4 h-4 fill-current"></i>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="text-gray-600 italic">"My husband and I loved it here! Such delicious and tasty food! Everything was so fresh and creamy. The service was excellent and very welcoming and accommodating!"</p>
+    <!-- Menu Preview -->
+    <section class="menu-preview" id="menu">
+        <div class="section-header reveal">
+            <h2>Our Signature <span style="color: var(--primary);">Dishes</span></h2>
+            <p>Explore our menu of bold flavors and authentic Indian street food favorites</p>
+        </div>
+
+        <div class="menu-grid">
+            <div class="menu-card reveal">
+                <div class="menu-card-image">
+                    <img src="https://kimi-web-img.moonshot.cn/img/dynamic-media-cdn.tripadvisor.com/bfe522fa23e1704d8390408738654a5ab9adf412.jpg" alt="Beet Cutlet">
+                    <span class="menu-badge vegan">Vegan</span>
+                </div>
+                <div class="menu-card-content">
+                    <h3>Crispy Beet Cutlet</h3>
+                    <p>Golden fried beetroot patties seasoned with aromatic spices, served with mint chutney.</p>
+                    <div class="menu-card-footer">
+                        <span class="price">$8.99</span>
+                        <a href="#" class="order-link">Order Now <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Hours & Location Section -->
-        <section id="contact" class="py-16 md:py-24 bg-white">
-            <div class="container mx-auto px-6">
-                <div class="grid md:grid-cols-2 gap-12 items-center">
-                    <div class="text-center md:text-left">
-                        <h2 class="text-3xl md:text-4xl font-bold text-accent mb-6">Visit Us</h2>
-                        <div class="space-y-4 text-lg text-gray-700">
-                            <div class="flex items-center justify-center md:justify-start">
-                                <i data-lucide="map-pin" class="w-6 h-6 mr-3 text-primary"></i>
-                                <span>15 E Hartsdale Ave, Hartsdale, NY 10530</span>
-                            </div>
-                            <div class="flex items-center justify-center md:justify-start">
-                                <i data-lucide="phone" class="w-6 h-6 mr-3 text-primary"></i>
-                                <a href="tel:+19144375022" class="hover:text-primary">(914) 437-5022</a>
-                            </div>
-                            <div class="flex items-center justify-center md:justify-start">
-                                <i data-lucide="mail" class="w-6 h-6 mr-3 text-primary"></i>
-                                <a href="mailto:info@maskaindianny.com" class="hover:text-primary">info@maskaindianny.com</a>
-                            </div>
-                        </div>
-                        <div class="mt-8">
-                            <h3 class="text-2xl font-bold text-accent mb-4">Hours</h3>
-                            <ul class="space-y-2 text-gray-700">
-                                <li><strong>Monday:</strong> 11:00 AM – 9:00 PM</li>
-                                <li class="text-red-600"><strong>Tuesday:</strong> Closed</li>
-                                <li><strong>Wednesday:</strong> 11:00 AM – 9:00 PM</li>
-                                <li><strong>Thursday:</strong> 11:00 AM – 9:00 PM</li>
-                                <li><strong>Friday:</strong> 11:00 AM – 9:00 PM</li>
-                                <li><strong>Saturday:</strong> 11:00 AM – 9:00 PM</li>
-                                <li><strong>Sunday:</strong> 11:00 AM – 9:00 PM</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="h-80 md:h-full rounded-lg overflow-hidden shadow-lg">
-                        <iframe 
-                            src="https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=MASKA+Indian+Street+Food,15+E+Hartsdale+Ave,Hartsdale,NY" 
-                            width="100%" 
-                            height="100%" 
-                            style="border:0;" 
-                            allowfullscreen="" 
-                            loading="lazy" 
-                            referrerpolicy="no-referrer-when-downgrade">
-                        </iframe>
+            <div class="menu-card reveal">
+                <div class="menu-card-image">
+                    <img src="https://kimi-web-img.moonshot.cn/img/s3-media0.fl.yelpcdn.com/0ccb0f6aa4bd6f656c81b0c4790ff8bfca58e130.jpg" alt="Chaat">
+                    <span class="menu-badge spicy">Spicy</span>
+                </div>
+                <div class="menu-card-content">
+                    <h3>Tangy Chaat</h3>
+                    <p>Classic street-side snack with crispy wafers, potatoes, chickpeas, yogurt, and tamarind chutney.</p>
+                    <div class="menu-card-footer">
+                        <span class="price">$7.99</span>
+                        <a href="#" class="order-link">Order Now <i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
+
+            <div class="menu-card reveal">
+                <div class="menu-card-image">
+                    <img src="https://kimi-web-img.moonshot.cn/img/images.happycow.net/a99c3b594c29c8b7e4e435b6cea1221f5dcbb804.jpeg" alt="Kathi Roll">
+                    <span class="menu-badge">Popular</span>
+                </div>
+                <div class="menu-card-content">
+                    <h3>Paneer Kathi Roll</h3>
+                    <p>Soft paratha wrapped around spiced paneer, onions, and peppers with our signature sauces.</p>
+                    <div class="menu-card-footer">
+                        <span class="price">$10.99</span>
+                        <a href="#" class="order-link">Order Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Feature -->
+    <div class="special-feature">
+        <div class="special-container">
+            <div class="special-content">
+                <h2>Ask for <span>Maska Marke!</span></h2>
+                <p>Want that extra richness and flavor? Just ask for "Maska Marke" (with extra butter) on any dish. Our special preparation style that takes your meal to the next level of indulgence.</p>
+                <a href="#" class="special-cta">Try It Today</a>
+            </div>
+            <div style="font-size: 4rem; color: var(--accent);">
+                <i class="fas fa-butter"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- Gallery -->
+    <section class="gallery" id="gallery">
+        <div class="section-header reveal">
+            <h2>Food <span style="color: var(--primary);">Gallery</span></h2>
+            <p>A visual journey through our vibrant flavors</p>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item large reveal">
+                <img src="https://kimi-web-img.moonshot.cn/img/static.where-e.com/f29fbc9b78e6939919cb1232736d5a9c50b61f3c.jpg" alt="Maska Food">
+                <div class="gallery-overlay">
+                    <h3>Authentic Presentation</h3>
+                    <p>Traditional serving styles</p>
+                </div>
+            </div>
+            <div class="gallery-item reveal">
+                <img src="https://kimi-web-img.moonshot.cn/img/dynamic-media-cdn.tripadvisor.com/bfe522fa23e1704d8390408738654a5ab9adf412.jpg" alt="Amritsari Kulcha">
+                <div class="gallery-overlay">
+                    <h3>Fresh Bread</h3>
+                </div>
+            </div>
+            <div class="gallery-item reveal">
+                <img src="https://kimi-web-img.moonshot.cn/img/images.happycow.net/a99c3b594c29c8b7e4e435b6cea1221f5dcbb804.jpeg" alt="Paratha">
+                <div class="gallery-overlay">
+                    <h3>Layered Paratha</h3>
+                </div>
+            </div>
+            <div class="gallery-item reveal">
+                <img src="https://kimi-web-img.moonshot.cn/img/s3-media0.fl.yelpcdn.com/0ccb0f6aa4bd6f656c81b0c4790ff8bfca58e130.jpg" alt="Chaat">
+                <div class="gallery-overlay">
+                    <h3>Street Chaat</h3>
+                </div>
+            </div>
+            <div class="gallery-item reveal">
+                <img src="https://kimi-web-img.moonshot.cn/img/designwomb.com/f02751e32d864010b0fd3af71cb80401d949cebb.jpg" alt="Indian Food">
+                <div class="gallery-overlay">
+                    <h3>Fresh Ingredients</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visit Us -->
+    <section class="visit" id="visit">
+        <div class="visit-container">
+            <div class="visit-info reveal">
+                <h2>Visit <span style="color: var(--primary);">Us</span></h2>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Location</h3>
+                        <p>15 E Hartsdale Avenue<br>Hartsdale, NY 10530</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Hours</h3>
+                        <div class="hours-grid">
+                            <span>Tuesday - Sunday</span>
+                            <span>11:00 AM - 11:30 PM</span>
+                            <span>Monday</span>
+                            <span>Closed</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-phone"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Contact</h3>
+                        <p>(914)-437-5022<br>info@maskaindianny.com</p>
+                    </div>
+                </div>
+
+                <div class="info-card">
+                    <div class="info-icon">
+                        <i class="fas fa-motorcycle"></i>
+                    </div>
+                    <div class="info-content">
+                        <h3>Delivery</h3>
+                        <p>Available on DoorDash, UberEats & Grubhub</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="map-container reveal">
+                <div class="map-placeholder">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>Find Us in Hartsdale</h3>
+                    <p>15 E Hartsdale Ave, Hartsdale, NY</p>
+                    <a href="https://maps.google.com" target="_blank" class="btn-primary" style="margin-top: 1rem;">Get Directions</a>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer class="bg-accent text-white">
-        <div class="container mx-auto px-6 py-8 text-center">
-            <p class="text-2xl font-bold text-primary tracking-wider">MASKA</p>
-            <p class="mt-2 text-gray-400">15 E Hartsdale Ave, Hartsdale, NY 10530</p>
-            <div class="flex justify-center mt-6">
-                <a href="https://www.instagram.com/maskaindian" target="_blank" class="text-gray-400 hover:text-white transition-colors">
-                    <i data-lucide="instagram" class="w-6 h-6"></i>
-                    <span class="sr-only">Instagram</span>
-                </a>
+    <footer id="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <img src="https://kimi-web-img.moonshot.cn/img/www.maskaindianny.com/28c0ed148430fd4b19f57492bb9fb74b36a206bd.png" alt="Maska Logo">
+                <p>Authentic Indian street food in the heart of Hartsdale. Bold flavors, fresh ingredients, and a vibrant atmosphere celebrating India's rich culinary heritage.</p>
+                <div class="social-links">
+                    <a href="https://www.instagram.com/maskaindian"><i class="fab fa-instagram"></i></a>
+                </div>
             </div>
-            <p class="mt-6 text-sm text-gray-500">&copy; 2024 MASKA Indian Street Food. All Rights Reserved.</p>
+
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#menu">Menu</a></li>
+                    <li><a href="#gallery">Gallery</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Order Online</h3>
+                <ul>
+                    <li><a href="https://www.doordash.com/store/maska-indian-vegetarian-hartsdale-31324333/?srsltid=AfmBOoo5jf4-jNd7QsH7Ozt5HNyiWm5xK9u3_EfYUS2-tOBMozVnnh93">DoorDash</a></li>
+                    <li><a href="https://www.ubereats.com/store/maska-hartsdale/qL7OhW7nR4CsQPMde4PT1w?utm_source=menu-maker">UberEats</a></li>
+                    <li><a href="https://www.grubhub.com/r/w/9227024/restaurant/9227024">Grubhub</a></li>
+                    <li><a href="https://order.toasttab.com/online/maska-hartsdale-15-east-hartsdale-avenue">Direct Order</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-column">
+                <h3>Contact</h3>
+                <ul>
+                    <li><a href="tel:9144375022">(914)-437-5022</a></li>
+                    <li><a href="mailto:info@maskaindianny.com">info@maskaindianny.com</a></li>
+                    <li><a href="#">15 E Hartsdale Ave<br>Hartsdale, NY 10530</a></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>&copy; 2024 Maska Indian Street Food. All rights reserved. | Designed with <i class="fas fa-heart" style="color: var(--primary);"></i> and spices</p>
         </div>
     </footer>
 
     <script>
-        lucide.createIcons();
-
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const header = document.getElementById('header');
-
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
         });
 
-        // Close mobile menu when a link is clicked
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
+        // Scroll reveal animation
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const revealOnScroll = () => {
+            revealElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+
+                if (elementTop < windowHeight - 100) {
+                    element.classList.add('active');
+                }
+            });
+        };
+
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+
+        // Logo click: smooth scroll to top without changing URL
+        const logoLink = document.querySelector('.logo-link');
+        if (logoLink) {
+            logoLink.addEventListener('click', (e) => {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
             });
         });
-        
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (event) => {
-            const isClickInside = header.contains(event.target);
-            if (!isClickInside) {
-                mobileMenu.classList.add('hidden');
+
+        // Mobile menu toggle (basic)
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            if (navLinks.style.display === 'flex') {
+                navLinks.style.position = 'absolute';
+                navLinks.style.top = '100%';
+                navLinks.style.left = '0';
+                navLinks.style.right = '0';
+                navLinks.style.background = 'white';
+                navLinks.style.flexDirection = 'column';
+                navLinks.style.padding = '2rem';
+                navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
             }
         });
     </script>
 </body>
+
 </html>
