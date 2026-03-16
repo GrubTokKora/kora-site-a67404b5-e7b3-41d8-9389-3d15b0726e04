@@ -1002,26 +1002,7 @@
 
         @media (max-width: 900px) {
             .menu-container {
-                grid-template-columns: 1fr;
-            }
-            .menu-categories ul {
-                position: relative;
-                top: 0;
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 0.5rem;
-                margin-bottom: 2rem;
-            }
-            .menu-categories li a {
-                border-left: none;
-                border-bottom: 3px solid transparent;
-                padding: 0.5rem 1rem;
-            }
-            .menu-categories li.active a {
-                border-bottom: 3px solid var(--primary);
-                transform: none;
-                background: transparent;
+                gap: 2rem;
             }
         }
 
@@ -1092,27 +1073,37 @@
         .menu-container {
             max-width: 1200px;
             margin: 0 auto;
-            display: grid;
-            grid-template-columns: 250px 1fr;
+            display: flex;
+            flex-direction: column;
             gap: 3rem;
+        }
+
+        .menu-categories {
+            overflow-x: auto;
+            padding-bottom: 0.5rem;
+            -webkit-overflow-scrolling: touch;
         }
 
         .menu-categories ul {
             list-style: none;
-            position: sticky;
-            top: 120px;
+            display: flex;
+            gap: 0.75rem;
+        }
+
+        .menu-categories li {
+            flex: 0 0 auto;
         }
 
         .menu-categories li a {
             display: block;
-            padding: 1rem 1.5rem;
+            padding: 0.75rem 1.5rem;
             text-decoration: none;
             color: var(--dark);
             font-weight: 600;
-            border-radius: 10px;
-            margin-bottom: 0.5rem;
+            border-radius: 999px;
             transition: all 0.3s ease;
-            border-left: 4px solid transparent;
+            border: 2px solid transparent;
+            white-space: nowrap;
         }
 
         .menu-categories li a:hover {
@@ -1121,10 +1112,10 @@
         }
 
         .menu-categories li.active a {
-            background: var(--light);
-            color: var(--primary);
-            border-left: 4px solid var(--primary);
-            transform: translateX(5px);
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: none;
         }
 
         .menu-category-content {
