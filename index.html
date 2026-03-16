@@ -53,15 +53,16 @@
             top: 0;
             width: 100%;
             padding: 1rem 5%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
+            background: transparent;
             z-index: 1000;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
         }
 
         nav.scrolled {
             padding: 0.5rem 5%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
         }
 
         .nav-container {
@@ -139,6 +140,8 @@
             display: none;
             font-size: 1.5rem;
             cursor: pointer;
+            color: var(--dark);
+            transition: color 0.3s ease;
         }
 
         /* Hero Section */
@@ -744,6 +747,34 @@
             line-height: 1.5;
         }
 
+        .hours-list {
+            margin-top: 0.5rem;
+            font-size: 0.95rem;
+        }
+        .hours-list .day-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.6rem 0;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .hours-list .day-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+        .hours-list .day-name {
+            font-weight: 500;
+            color: var(--dark);
+        }
+        .hours-list .day-time {
+            color: #555;
+            font-weight: 500;
+        }
+        .hours-list .day-time.closed {
+            color: var(--spice-red);
+            font-weight: 600;
+        }
+
         .hours-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -779,6 +810,36 @@
             color: var(--primary);
         }
 
+        .delivery-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        .delivery-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            background: #f0f0f0;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+        .delivery-link:hover {
+            background: var(--primary);
+            color: white;
+        }
+        .delivery-link i {
+            color: var(--primary);
+            transition: color 0.3s ease;
+        }
+        .delivery-link:hover i {
+            color: white;
+        }
+
         /* Footer */
         footer {
             background: var(--dark);
@@ -790,7 +851,7 @@
             max-width: 1400px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr;
             gap: 3rem;
             margin-bottom: 3rem;
         }
@@ -939,6 +1000,31 @@
             }
         }
 
+        @media (max-width: 900px) {
+            .menu-container {
+                grid-template-columns: 1fr;
+            }
+            .menu-categories ul {
+                position: relative;
+                top: 0;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 0.5rem;
+                margin-bottom: 2rem;
+            }
+            .menu-categories li a {
+                border-left: none;
+                border-bottom: 3px solid transparent;
+                padding: 0.5rem 1rem;
+            }
+            .menu-categories li.active a {
+                border-bottom: 3px solid var(--primary);
+                transform: none;
+                background: transparent;
+            }
+        }
+
         @media (max-width: 768px) {
             .nav-links {
                 display: none;
@@ -996,6 +1082,101 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Full Menu Section */
+        .menu-full {
+            padding: 6rem 5%;
+            background: white;
+        }
+
+        .menu-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 3rem;
+        }
+
+        .menu-categories ul {
+            list-style: none;
+            position: sticky;
+            top: 120px;
+        }
+
+        .menu-categories li a {
+            display: block;
+            padding: 1rem 1.5rem;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 600;
+            border-radius: 10px;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .menu-categories li a:hover {
+            background: var(--light);
+            color: var(--primary);
+        }
+
+        .menu-categories li.active a {
+            background: var(--light);
+            color: var(--primary);
+            border-left: 4px solid var(--primary);
+            transform: translateX(5px);
+        }
+
+        .menu-category-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .menu-category-content.active {
+            display: block;
+        }
+
+        .menu-item {
+            padding-bottom: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px dashed #ddd;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .menu-item-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--dark);
+        }
+
+        .menu-item-price {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary);
+            white-space: nowrap;
+            padding-left: 1rem;
+        }
+
+        .menu-item p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .menu-footer-cta {
+            text-align: center;
+            margin-top: 4rem;
+        }
     </style>
     <base target="_blank">
 </head>
@@ -1011,9 +1192,9 @@
             </a>
             <ul class="nav-links">
                 <li><a href="#about">About</a></li>
-                <li><a href="https://www.maskaindianny.com/maska-indian-menu-2025.pdf">Menu</a></li>
+                <li><a href="#menu">Menu</a></li>
                 <li><a href="#gallery">Gallery</a></li>
-                <li><a href="https://www.toasttab.com/maska-hartsdale-15-east-hartsdale-avenue/rewardsSignup">Reviews</a></li>
+                <li><a href="https://www.toasttab.com/maska-hartsdale-15-east-hartsdale-avenue/rewardsSignup">Rewards</a></li>
                 <li><a href="#visit">Visit Us</a></li>
                 <li><a href="#footer">Order</a></li>
                 <li><a href="#order" class="order-btn">Order Online</a></li>
@@ -1060,8 +1241,8 @@
             </div>
             <div class="feature-item">
                 <i class="fas fa-clock"></i>
-                <h3>Open Late</h3>
-                <p>Until 11:30 PM</p>
+                <h3>Open Until 9 PM</h3>
+                <p>Closed on Tuesdays</p>
             </div>
             <div class="feature-item">
                 <i class="fas fa-fire"></i>
@@ -1096,58 +1277,142 @@
         </div>
     </section>
 
-    <!-- Menu Preview -->
-    <section class="menu-preview" id="menu">
+    <!-- Full Menu Section -->
+    <section class="menu-full" id="menu">
         <div class="section-header reveal">
-            <h2>Our Signature <span style="color: var(--primary);">Dishes</span></h2>
-            <p>Explore our menu of bold flavors and authentic Indian street food favorites</p>
+            <h2>Our Full <span style="color: var(--primary);">Menu</span></h2>
+            <p>A journey through the vibrant street food culture of India. All dishes are 100% vegetarian.</p>
         </div>
 
-        <div class="menu-grid">
-            <div class="menu-card reveal">
-                <div class="menu-card-image">
-                    <img src="https://kimi-web-img.moonshot.cn/img/dynamic-media-cdn.tripadvisor.com/bfe522fa23e1704d8390408738654a5ab9adf412.jpg" alt="Beet Cutlet">
-                    <span class="menu-badge vegan">Vegan</span>
+        <div class="menu-container reveal">
+            <div class="menu-categories">
+                <ul>
+                    <li class="active" data-category="chaat"><a href="#menu">Chaat</a></li>
+                    <li data-category="chakna"><a href="#menu">Chakna (Snacks)</a></li>
+                    <li data-category="bowl"><a href="#menu">Bowl</a></li>
+                    <li data-category="kathi-roll"><a href="#menu">Kathi Roll</a></li>
+                    <li data-category="breads"><a href="#menu">Breads</a></li>
+                    <li data-category="sides"><a href="#menu">Sides</a></li>
+                    <li data-category="beverages"><a href="#menu">Beverages</a></li>
+                </ul>
+            </div>
+            <div class="menu-items-display">
+                <!-- Chaat -->
+                <div id="menu-chaat" class="menu-category-content active">
+                    <div class="menu-item">
+                        <div class="menu-item-header"><h3>SAMOSA CHAAT</h3><span class="menu-item-price">$9</span></div>
+                        <p>Samosa topped with chickpeas, yogurt, mint & tamarind chutney.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header"><h3>DAHI BHALLA</h3><span class="menu-item-price">$9</span></div>
+                        <p>Lentil fritters soaked in yogurt, topped with spices and chutneys.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header"><h3>BHEL PURI</h3><span class="menu-item-price">$8</span></div>
+                        <p>Puffed rice, sev, onions, potatoes, and chutneys.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header"><h3>DAHI PURI</h3><span class="menu-item-price">$9</span></div>
+                        <p>Crispy shells filled with potatoes, chickpeas, yogurt, and chutneys.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header"><h3>PANI PURI</h3><span class="menu-item-price">$9</span></div>
+                        <p>Crispy shells filled with potatoes, chickpeas, served with spicy tangy water.</p>
+                    </div>
                 </div>
-                <div class="menu-card-content">
-                    <h3>Crispy Beet Cutlet</h3>
-                    <p>Golden fried beetroot patties seasoned with aromatic spices, served with mint chutney.</p>
-                    <div class="menu-card-footer">
-                        <span class="price">$8.99</span>
-                        <a href="#" class="order-link">Order Now <i class="fas fa-arrow-right"></i></a>
+                <!-- Chakna (Snacks) -->
+                <div id="menu-chakna" class="menu-category-content">
+                    <div class="menu-item">
+                        <div class="menu-item-header"><h3>SAMOSA (2 PCS)</h3><span class="menu-item-price">$6</span></div>
+                        <p>Crispy pastry filled with spiced potatoes and peas.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header"><h3>BATATA VADA (2 PCS)</h3><span class="menu-item-price">$6</span></div>
+                        <p>Spiced potato fritters coated in chickpea flour batter.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header"><h3>BEETROOT CUTLET (2 PCS)</h3><span class="menu-item-price">$7</span></div>
+                        <p>Patties made with beetroot, potatoes, and spices.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header"><h3>GOBI MANCHURIAN</h3><span class="menu-item-price">$12</span></div>
+                        <p>Crispy cauliflower florets tossed in a tangy Manchurian sauce.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header"><h3>CHILLI PANEER</h3><span class="menu-item-price">$13</span></div>
+                        <p>Cottage cheese cubes stir-fried with peppers and onions in a spicy sauce.</p>
+                    </div>
+                </div>
+                <!-- Bowl -->
+                <div id="menu-bowl" class="menu-category-content">
+                    <div class="menu-item">
+                        <div class="menu-item-header"><h3>PANEER BUTTER MASALA BOWL</h3><span class="menu-item-price">$15</span></div>
+                        <p>Served with rice.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header"><h3>CHANA MASALA BOWL</h3><span class="menu-item-price">$13</span></div>
+                        <p>Served with rice.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header"><h3>DAL MAKHANI BOWL</h3><span class="menu-item-price">$13</span></div>
+                        <p>Served with rice.</p>
+                    </div>
+                </div>
+                <!-- Kathi Roll -->
+                <div id="menu-kathi-roll" class="menu-category-content">
+                    <div class="menu-item">
+                        <div class="menu-item-header"><h3>PANEER KATHI ROLL</h3><span class="menu-item-price">$12</span></div>
+                        <p>Spiced paneer wrapped in a paratha.</p>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header"><h3>VEGGIE KATHI ROLL</h3><span class="menu-item-price">$10</span></div>
+                        <p>Mixed vegetables wrapped in a paratha.</p>
+                    </div>
+                </div>
+                <!-- Breads -->
+                <div id="menu-breads" class="menu-category-content">
+                    <div class="menu-item">
+                        <div class="menu-item-header"><h3>NAAN</h3><span class="menu-item-price">$4</span></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header"><h3>GARLIC NAAN</h3><span class="menu-item-price">$5</span></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header"><h3>TANDOORI ROTI</h3><span class="menu-item-price">$4</span></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header"><h3>LACHHA PARATHA</h3><span class="menu-item-price">$5</span></div>
+                    </div>
+                </div>
+                <!-- Sides -->
+                <div id="menu-sides" class="menu-category-content">
+                    <div class="menu-item">
+                        <div class="menu-item-header"><h3>RAITA</h3><span class="menu-item-price">$4</span></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header"><h3>PAPADUM</h3><span class="menu-item-price">$3</span></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header"><h3>RICE</h3><span class="menu-item-price">$4</span></div>
+                    </div>
+                </div>
+                <!-- Beverages -->
+                <div id="menu-beverages" class="menu-category-content">
+                    <div class="menu-item">
+                        <div class="menu-item-header"><h3>MASALA CHAI</h3><span class="menu-item-price">$4</span></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header"><h3>MANGO LASSI</h3><span class="menu-item-price">$6</span></div>
+                    </div>
+                    <div class="menu-item">
+                        <div class="menu-item-header"><h3>SODA</h3><span class="menu-item-price">$3</span></div>
+                        <p>Coke, Diet Coke, Sprite</p>
                     </div>
                 </div>
             </div>
-
-            <div class="menu-card reveal">
-                <div class="menu-card-image">
-                    <img src="https://kimi-web-img.moonshot.cn/img/s3-media0.fl.yelpcdn.com/0ccb0f6aa4bd6f656c81b0c4790ff8bfca58e130.jpg" alt="Chaat">
-                    <span class="menu-badge spicy">Spicy</span>
-                </div>
-                <div class="menu-card-content">
-                    <h3>Tangy Chaat</h3>
-                    <p>Classic street-side snack with crispy wafers, potatoes, chickpeas, yogurt, and tamarind chutney.</p>
-                    <div class="menu-card-footer">
-                        <span class="price">$7.99</span>
-                        <a href="#" class="order-link">Order Now <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-card reveal">
-                <div class="menu-card-image">
-                    <img src="https://kimi-web-img.moonshot.cn/img/images.happycow.net/a99c3b594c29c8b7e4e435b6cea1221f5dcbb804.jpeg" alt="Kathi Roll">
-                    <span class="menu-badge">Popular</span>
-                </div>
-                <div class="menu-card-content">
-                    <h3>Paneer Kathi Roll</h3>
-                    <p>Soft paratha wrapped around spiced paneer, onions, and peppers with our signature sauces.</p>
-                    <div class="menu-card-footer">
-                        <span class="price">$10.99</span>
-                        <a href="#" class="order-link">Order Now <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-            </div>
+        </div>
+        <div class="menu-footer-cta reveal">
+            <a href="https://order.toasttab.com/online/maska-hartsdale-15-east-hartsdale-avenue" class="btn-primary">Order Online Now</a>
         </div>
     </section>
 
@@ -1215,36 +1480,20 @@
 
                 <div class="info-card">
                     <div class="info-icon">
-                        <i class="fas fa-map-marker-alt"></i>
-                    </div>
-                    <div class="info-content">
-                        <h3>Location</h3>
-                        <p>15 E Hartsdale Avenue<br>Hartsdale, NY 10530</p>
-                    </div>
-                </div>
-
-                <div class="info-card">
-                    <div class="info-icon">
                         <i class="fas fa-clock"></i>
                     </div>
                     <div class="info-content">
-                        <h3>Hours</h3>
-                        <div class="hours-grid">
-                            <span>Tuesday - Sunday</span>
-                            <span>11:00 AM - 11:30 PM</span>
-                            <span>Monday</span>
-                            <span>Closed</span>
+                        <h3>Opening Hours</h3>
+                        <div class="hours-list">
+                            <div class="day-item">
+                                <span class="day-name">Mon, Wed - Sun</span>
+                                <span class="day-time">11:00 AM - 9:00 PM</span>
+                            </div>
+                            <div class="day-item">
+                                <span class="day-name">Tuesday</span>
+                                <span class="day-time closed">Closed</span>
+                            </div>
                         </div>
-                    </div>
-                </div>
-
-                <div class="info-card">
-                    <div class="info-icon">
-                        <i class="fas fa-phone"></i>
-                    </div>
-                    <div class="info-content">
-                        <h3>Contact</h3>
-                        <p>(914)-437-5022<br>info@maskaindianny.com</p>
                     </div>
                 </div>
 
@@ -1253,19 +1502,29 @@
                         <i class="fas fa-motorcycle"></i>
                     </div>
                     <div class="info-content">
-                        <h3>Delivery</h3>
-                        <p>Available on DoorDash, UberEats & Grubhub</p>
+                        <h3>Order & Delivery</h3>
+                        <div class="delivery-links">
+                             <a href="https://order.toasttab.com/online/maska-hartsdale-15-east-hartsdale-avenue" target="_blank" class="delivery-link"><i class="fas fa-store"></i> Direct Order</a>
+                             <a href="https://www.doordash.com/store/maska-indian-vegetarian-hartsdale-31324333/?srsltid=AfmBOoo5jf4-jNd7QsH7Ozt5HNyiWm5xK9u3_EfYUS2-tOBMozVnnh93" target="_blank" class="delivery-link"><i class="fas fa-truck"></i> DoorDash</a>
+                             <a href="https://www.ubereats.com/store/maska-hartsdale/qL7OhW7nR4CsQPMde4PT1w?utm_source=menu-maker" target="_blank" class="delivery-link"><i class="fas fa-car"></i> UberEats</a>
+                             <a href="https://www.grubhub.com/r/w/9227024/restaurant/9227024" target="_blank" class="delivery-link"><i class="fas fa-utensils"></i> Grubhub</a>
+                        </div>
                     </div>
                 </div>
+                <a href="https://maps.app.goo.gl/1rmVxFFc9SsNTvrQ7" target="_blank" class="btn-primary" style="margin-top: 1.5rem; display: inline-block;">Get Directions</a>
             </div>
 
             <div class="map-container reveal">
-                <div class="map-placeholder">
-                    <i class="fas fa-map-marked-alt"></i>
-                    <h3>Find Us in Hartsdale</h3>
-                    <p>15 E Hartsdale Ave, Hartsdale, NY</p>
-                    <a href="https://maps.google.com" target="_blank" class="btn-primary" style="margin-top: 1rem;">Get Directions</a>
-                </div>
+                <iframe
+                    src="https://maps.google.com/maps?q=41.0186017,-73.7978503&z=15&output=embed&hl=en"
+                    width="100%"
+                    height="100%"
+                    style="border:0;"
+                    allowfullscreen=""
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"
+                    title="Maska Indian Street Food Location Map">
+                </iframe>
             </div>
         </div>
     </section>
@@ -1288,16 +1547,6 @@
                     <li><a href="#about">About Us</a></li>
                     <li><a href="#menu">Menu</a></li>
                     <li><a href="#gallery">Gallery</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-column">
-                <h3>Order Online</h3>
-                <ul>
-                    <li><a href="https://www.doordash.com/store/maska-indian-vegetarian-hartsdale-31324333/?srsltid=AfmBOoo5jf4-jNd7QsH7Ozt5HNyiWm5xK9u3_EfYUS2-tOBMozVnnh93">DoorDash</a></li>
-                    <li><a href="https://www.ubereats.com/store/maska-hartsdale/qL7OhW7nR4CsQPMde4PT1w?utm_source=menu-maker">UberEats</a></li>
-                    <li><a href="https://www.grubhub.com/r/w/9227024/restaurant/9227024">Grubhub</a></li>
-                    <li><a href="https://order.toasttab.com/online/maska-hartsdale-15-east-hartsdale-avenue">Direct Order</a></li>
                 </ul>
             </div>
 
@@ -1387,6 +1636,35 @@
                 navLinks.style.boxShadow = '0 10px 20px rgba(0,0,0,0.1)';
             }
         });
+
+        // Menu category switching
+        const menuCategories = document.querySelector('.menu-categories');
+        if (menuCategories) {
+            const menuContents = document.querySelectorAll('.menu-category-content');
+            menuCategories.addEventListener('click', (e) => {
+                const link = e.target.closest('a');
+                if (!link) return;
+                
+                e.preventDefault();
+                const categoryItem = link.parentElement;
+                if (categoryItem.classList.contains('active')) return;
+
+                const targetCategory = categoryItem.dataset.category;
+
+                // Update active link
+                const currentActive = menuCategories.querySelector('li.active');
+                if(currentActive) currentActive.classList.remove('active');
+                categoryItem.classList.add('active');
+
+                // Update active content
+                menuContents.forEach(content => {
+                    content.classList.remove('active');
+                    if (content.id === `menu-${targetCategory}`) {
+                        content.classList.add('active');
+                    }
+                });
+            });
+        }
     </script>
 </body>
 
