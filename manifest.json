@@ -1,0 +1,17 @@
+{
+  "name": "Maska Indian Street Food",
+  "short_name": "Maska",
+  "description": "Authentic Indian street food in Hartsdale, NY — vegetarian and vegan.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FFF8F0",
+  "theme_color": "#FF6B35",
+  "icons": [
+    {
+      "src": "images/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

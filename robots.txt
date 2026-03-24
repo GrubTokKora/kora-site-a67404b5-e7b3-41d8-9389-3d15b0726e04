@@ -1,0 +1,5 @@
+# Public site origin — must match <link rel="canonical"> in index.html (https://www.maskaindianny.com/)
+User-agent: *
+Allow: /
+
+Sitemap: https://www.maskaindianny.com/sitemap.xml
